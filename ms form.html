@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<h1>Sign Up</h1>
+
+<script src="angular.min.js">
+</script>
+
+<script language="javascript">
+angular.module("mod",[]).controller("con1",function($scope){
+$scope.Fname="vinesh";
+$scope.Lname="";
+$scope.getvalues=function (){
+
+$scope.confirm=true;
+
+return $scope.display="Firstname:" + $scope.Fname + "Lastname:"+ $scope.Lname + "Address:" + $scope.address + "Gender:" + $scope.gender + "Mobilenumber:" + $scope.mobile
++ "Qualification:" + $scope.degree + "Email:" + $scope.email + "Nationality:" + $scope.nat;
+}
+});
+
+
+</script>
+</head>
+<style>
+body {
+background-color:	#808000 ;
+  font-family: 'Nunito', sans-serif;
+  color: #384047;
+}
+h1 {
+  margin: 0 0 30px 0;
+  text-align: center;
+
+}
+h3
+{
+ max-width: 300px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #FFF8DC;
+  border-radius: 20px;
+}
+
+form
+{
+ max-width: 300px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #FFF8DC;
+  border-radius: 20px;
+}
+
+button
+{
+text-align:center;
+}
+
+
+</style>
+<body ng-app="mod">
+
+<h3>
+<div ng-controller="con1" >
+<p>Firstname : <input type="text" ng-model="Fname" placeholder="Firstname"></p>
+<p>Lastname : <input type="text" ng-model="Lname" placeholder="Lastname"></p>
+Gender:
+<input type="radio" name="gender" ng-model="gender" value="male">male
+<input type="radio" name="gender" ng-model="gender" value="female">female
+<input type="radio" name="gender" ng-model="gender" value="other">other<br>
+<br>
+Address:
+<textarea rows="3" cols="30" name="address" ng-model="address">
+</textarea>
+<br>
+<br>
+Mobile number:
+<input type="number" name="number" ng-model="mobile">
+<br>
+<br>
+Email:
+<input type="text" name="email" ng-model="email"/>
+<br>
+<br>
+Qualification: 
+<select id="degree" name="Qualification" ng-model="degree" >
+          <optgroup label="Web">
+            	<option value="frontend_developer">Front-End Developer</option>
+            	<option value="php_developor">PHP Developer</option>
+            	<option value="Android_developer">Androild Developer</option>
+            	<option value="iOS_developer">iOS Developer</option>
+            	<option value="mobile_designer">Mobile Designer</option>
+            	<option value="business_owner">Business Owner</option>
+            	<option value="freelancer">Freelancer</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option value="secretary">Secretary</option>
+            <option value="maintenance">Maintenance</option>
+          </optgroup>
+        </select>
+		<br>
+		<br>
+Nationality:
+<select ng-model="nat">
+<option value="India">India</option>
+<option value="Us">Us</option>
+<option value="China">China</option>
+<option value="Jermani">Jermani</option>
+<option value="other">others</option>
+</select>
+
+
+
+
+<br>
+<br>
+ <button ng-click="getvalues()">OK</button>
+  <div ng-show="confirm">
+Confirm your details<br>
+{{display}}
+</div>
+
+</div>
+
+
+</body>
+</html>

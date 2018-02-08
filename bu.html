@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<script src="angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+First Name: <input type="text" ng-model="firstName"><br>
+<br>
+Last Name: <input type="text" ng-model="lastName"><br>
+<br>
+<button ng-click="addrow()">ADD</button>
+<br>
+
+
+<table>
+  <tr>
+	<th>Code</th>
+    <th>Firstname</th>
+	<th>Lastname</th>
+  </tr>
+  <tr ng-repeat="p in persons">
+  <td><label>{{$index + 1}}</label></td>
+  <th>{{p.fname}}</th>
+  <th>{{p.lname}}</th>
+  <td><input type="checkbox" ng-model="p.Remove"/></td>
+</table>   
+<br>
+	<div>
+        <button ng-click="submit()">Submit</button>   
+        <button ng-click="removeRow()">Remove</button>
+	</div>
+<br>
+<div id="display" style="padding:10px 0;">{{display}}</div>
+
+</div>
+<br>
+
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstName = "";
+    $scope.lastName = "";
+	$scope.persons=[];
+	
+	$scope.addrow=function(){
+	var user={
+	fname:$scope.firstName,
+	lname:$scope.lastName
+	};
+	return $scope.persons.push(user);
+	}
+		
+$scope.removeRow = function () {
+            var arrper = [];
+            angular.forEach($scope.persons, function (value) {
+                if (!value.Remove) {
+                    arrper.push(value);
+                }
+            });
+            $scope.persons = arrper;
+        };
+
+        
+        $scope.submit = function () {
+            var arrper = [];
+            angular.forEach($scope.persons, function (value) {
+                arrper.push('Firstname:' + value.fname + ', Lastname:' + value.lname);
+            });
+            $scope.display = arrper;
+        };	
+
+	
+		
+	
+});
+</script>
+<br>
+
+
+</body>
+</html>
